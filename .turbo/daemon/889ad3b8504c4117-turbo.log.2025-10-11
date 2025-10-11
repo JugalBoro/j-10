@@ -1,0 +1,232 @@
+2025-10-11T15:45:01.188712Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/1.cookie"), AnchoredSystemPathBuf(".turbo/cookies/.turbo-cookie")}
+2025-10-11T15:45:01.188723Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T15:45:01.489979Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/daemon/889ad3b8504c4117-turbo.log.2025-10-11"), AnchoredSystemPathBuf(".turbo/cookies/1.cookie")}
+2025-10-11T15:45:01.489997Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T15:45:05.290648Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T15:45:05.290667Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T15:45:05.590140Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T15:45:05.590182Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T15:45:05.590210Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:06.694523Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T15:45:06.694540Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T15:45:06.988543Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo"), AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T15:45:06.988559Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }, WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T15:45:06.988581Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:07.189984Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/tsconfig.json"), AnchoredSystemPathBuf("apps/ops-ui/next-env.d.ts")}
+2025-10-11T15:45:07.189999Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T15:45:07.288267Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T15:45:07.288284Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T15:45:07.489290Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/next-env.d.ts"), AnchoredSystemPathBuf("apps/ops-ui/tsconfig.json"), AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T15:45:07.489316Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T15:45:07.504031Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:07.512398Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:07.688853Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T15:45:07.688867Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T15:45:29.389375Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T15:45:29.389516Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T15:45:29.421829Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:29.494185Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T15:45:29.494300Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T15:45:29.522548Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:32.889140Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T15:45:32.889154Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T15:45:32.916355Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:45:33.089398Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T15:45:33.089415Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T15:45:33.093331Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:59:12.694919Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T15:59:12.694967Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T15:59:12.766577Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:59:12.896904Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T15:59:12.896922Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T15:59:12.950122Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:59:18.792256Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T15:59:18.792316Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T15:59:18.842258Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T15:59:18.991332Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T15:59:18.991349Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T15:59:19.027869Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:03:49.992196Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_33261_060f338c641e65166a849c9705b35ac3"), AnchoredSystemPathBuf("")}
+2025-10-11T16:03:49.992227Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:03:50.493228Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-11T16:03:50.493239Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-11T16:03:50.593261Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-11T16:03:50.593275Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-11T16:05:32.992196Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_34566_f9a1e2ad6a09962a564d0bd462d1f8db"), AnchoredSystemPathBuf("")}
+2025-10-11T16:05:32.992220Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:05:33.420782Z  WARN turborepo_filewatch::globwatcher: encountered filewatching error, flushing all globs: channel lagged by 256
+2025-10-11T16:05:33.423616Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-11T16:05:33.423623Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-11T16:05:33.593504Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/common.ts")}
+2025-10-11T16:05:33.593519Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:37.391336Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:05:37.391352Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:37.492940Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:05:37.492956Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:37.492985Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:05:38.192894Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/rule.ts")}
+2025-10-11T16:05:38.192910Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:38.992868Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:05:38.992884Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:56.403244Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/user.ts")}
+2025-10-11T16:05:56.403263Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:05:56.892660Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:05:56.892672Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:06:28.491874Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/index.ts")}
+2025-10-11T16:06:28.491884Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:06:28.792251Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:06:28.792262Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:03.692817Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/.!35801!common.ts"), AnchoredSystemPathBuf("packages/schemas/src/common.ts")}
+2025-10-11T16:07:03.692829Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:05.893125Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:07:05.893141Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:25.195921Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T16:07:25.195973Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T16:07:25.231398Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:07:26.993109Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T16:07:26.993125Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T16:07:27.020151Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:07:30.692199Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist"), AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T16:07:30.692239Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }, WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T16:07:30.692288Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:07:30.767102Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:07:39.593409Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/common.ts"), AnchoredSystemPathBuf("packages/schemas/src/rule.ts"), AnchoredSystemPathBuf("packages/schemas/src/user.ts")}
+2025-10-11T16:07:39.593456Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:40.693955Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:07:40.693986Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:40.992731Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:07:40.992747Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:07:40.992773Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:08:43.695178Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages"), AnchoredSystemPathBuf("apps/api/packages")}
+2025-10-11T16:08:43.695249Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T16:08:43.695294Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:08:45.896305Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas"), AnchoredSystemPathBuf("packages"), AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:45.896325Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:08:45.896507Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:08:46.395991Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:46.396013Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:08:47.299605Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common"), AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:47.299630Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:08:47.696584Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:47.696751Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:08:47.798617Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:47.798638Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:08:48.093021Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:48.093036Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:08:48.494038Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:48.494057Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:08:49.003879Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:49.003900Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:08:49.905510Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk"), AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:49.905529Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:08:49.995101Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:49.995118Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:08:50.193681Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:08:50.193698Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:09:55.192020Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/packages"), AnchoredSystemPathBuf("apps/api/packages")}
+2025-10-11T16:09:55.192058Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }, WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T16:12:33.691534Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:12:33.691560Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:12:33.790793Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/src"), AnchoredSystemPathBuf("packages/schemas/src/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/workflow.ts"), AnchoredSystemPathBuf("packages/sdk/src/types.ts"), AnchoredSystemPathBuf("packages/sdk/src/client.ts"), AnchoredSystemPathBuf("packages/common/src/logger"), AnchoredSystemPathBuf("packages/sdk/src/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/auth.ts"), AnchoredSystemPathBuf("packages/sdk/package.json"), AnchoredSystemPathBuf("packages/sdk/src"), AnchoredSystemPathBuf("packages/common/src/utils"), AnchoredSystemPathBuf("packages/common/src/config/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/run.ts"), AnchoredSystemPathBuf("packages/common/src/utils/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/schedule.ts"), AnchoredSystemPathBuf("packages/schemas/src/webhook.ts"), AnchoredSystemPathBuf("packages/sdk/tsconfig.json"), AnchoredSystemPathBuf("packages/schemas/package.json"), AnchoredSystemPathBuf("packages/common/package.json"), AnchoredSystemPathBuf("packages/schemas/src/common.ts"), AnchoredSystemPathBuf("packages/schemas/src/approval.ts"), AnchoredSystemPathBuf("packages/schemas/src/evidence.ts"), AnchoredSystemPathBuf("packages/common/tsconfig.json"), AnchoredSystemPathBuf("packages/common/src/config"), AnchoredSystemPathBuf("packages/schemas/src"), AnchoredSystemPathBuf("packages/schemas/src/dlq.ts"), AnchoredSystemPathBuf("packages/schemas/src/user.ts"), AnchoredSystemPathBuf("packages/schemas/tsconfig.json"), AnchoredSystemPathBuf("packages/sdk/src/errors.ts"), AnchoredSystemPathBuf("packages/common/src/errors"), AnchoredSystemPathBuf("packages/schemas/src/connector.ts"), AnchoredSystemPathBuf("packages/common/src/index.ts"), AnchoredSystemPathBuf("packages/common/src/logger/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/org.ts"), AnchoredSystemPathBuf("packages/schemas/src/rule.ts"), AnchoredSystemPathBuf("packages/common/src/errors/index.ts")}
+2025-10-11T16:12:33.790806Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }, WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:12:33.890987Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/package.json")}
+2025-10-11T16:12:33.891000Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:12:33.943560Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:33.991017Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.json"), AnchoredSystemPathBuf("packages/schemas/src/org.ts"), AnchoredSystemPathBuf("packages/common/src/index.ts"), AnchoredSystemPathBuf("packages/schemas/package.json"), AnchoredSystemPathBuf("packages/common/src/config/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/common.ts"), AnchoredSystemPathBuf("packages/schemas/src/webhook.ts"), AnchoredSystemPathBuf("packages/schemas/src/workflow.ts"), AnchoredSystemPathBuf("packages/sdk/package.json"), AnchoredSystemPathBuf("packages/sdk/src/index.ts"), AnchoredSystemPathBuf("packages/common/src/errors/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/index.ts"), AnchoredSystemPathBuf("packages/common/src/utils/index.ts"), AnchoredSystemPathBuf("packages/common/tsconfig.json"), AnchoredSystemPathBuf("packages/schemas/src/auth.ts"), AnchoredSystemPathBuf("packages/schemas/tsconfig.json"), AnchoredSystemPathBuf("packages/schemas/src/approval.ts"), AnchoredSystemPathBuf("packages/schemas/src/connector.ts"), AnchoredSystemPathBuf("packages/schemas/src/schedule.ts"), AnchoredSystemPathBuf("packages/sdk/src/errors.ts"), AnchoredSystemPathBuf("packages/schemas/src/dlq.ts"), AnchoredSystemPathBuf("packages/schemas/src/user.ts"), AnchoredSystemPathBuf("packages/schemas/src/run.ts"), AnchoredSystemPathBuf("packages/sdk/src/client.ts"), AnchoredSystemPathBuf("packages/sdk/src/types.ts"), AnchoredSystemPathBuf("packages/schemas/src/evidence.ts"), AnchoredSystemPathBuf("packages/common/src/logger/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/rule.ts")}
+2025-10-11T16:12:33.991030Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }, WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:12:33.991046Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:33.991058Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:33.991069Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:34.591477Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo"), AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:12:34.591493Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:12:34.690362Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo"), AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:12:34.690378Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:12:34.690403Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:34.775585Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:12:34.791800Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:12:34.791817Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:12:34.791853Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:13:00.191557Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/2.cookie")}
+2025-10-11T16:13:00.191579Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:13:00.392805Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/2.cookie")}
+2025-10-11T16:13:00.392821Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:13:01.891823Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist"), AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T16:13:01.891836Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }, WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T16:13:01.917422Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:13:01.937972Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:13:04.394609Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:13:04.394960Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:13:04.490634Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:13:04.490655Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:13:04.490687Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:13:05.990695Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/worker/dist")}
+2025-10-11T16:13:05.990710Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@worker/automation"), path: AnchoredSystemPathBuf("apps/worker") }}))
+2025-10-11T16:13:05.990739Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:13:06.091663Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/api/dist")}
+2025-10-11T16:13:06.091678Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@api/automation"), path: AnchoredSystemPathBuf("apps/api") }}))
+2025-10-11T16:13:06.101657Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:14:25.695609Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/src/user.ts"), AnchoredSystemPathBuf("packages/schemas/src/index.ts"), AnchoredSystemPathBuf("packages/schemas/src/rule.ts")}
+2025-10-11T16:14:25.695639Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:14:25.781901Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:14.092865Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_42003_f3cafebf6cbe61f257f70433703c2bc9")}
+2025-10-11T16:15:14.092968Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:15:20.975885Z  WARN turborepo_filewatch::package_watcher: lagged behind 234 processing file watching events
+2025-10-11T16:15:20.979090Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-11T16:15:20.979102Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-11T16:15:20.993494Z  WARN turborepo_filewatch::package_watcher: lagged behind 296 processing file watching events
+2025-10-11T16:15:21.001848Z  WARN turborepo_filewatch::package_watcher: lagged behind 52 processing file watching events
+2025-10-11T16:15:21.990862Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/node_modules"), AnchoredSystemPathBuf("packages/sdk/node_modules"), AnchoredSystemPathBuf("packages/schemas/node_modules")}
+2025-10-11T16:15:21.990881Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }, WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }, WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:15:22.081653Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:22.097438Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:22.101276Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:25.093700Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf("pnpm-lock.yaml.3152918222")}
+2025-10-11T16:15:25.093717Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-11T16:15:25.394785Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:25.394799Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }}))
+2025-10-11T16:15:26.494485Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/package.json.2021340290"), AnchoredSystemPathBuf("packages/sdk/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:26.494508Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@sdk/automation"), path: AnchoredSystemPathBuf("packages/sdk") }, WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:26.645583Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:26.739585Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/package.json.2021340290"), AnchoredSystemPathBuf("apps/ops-ui/package.json")}
+2025-10-11T16:15:26.739601Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:26.739640Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:31.791604Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:31.791627Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:15:31.893400Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/common/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:31.893418Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@common/automation"), path: AnchoredSystemPathBuf("packages/common") }}))
+2025-10-11T16:15:31.893441Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:34.491133Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:34.491149Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:15:34.891448Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages/schemas/tsconfig.tsbuildinfo")}
+2025-10-11T16:15:34.891465Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@schemas/automation"), path: AnchoredSystemPathBuf("packages/schemas") }}))
+2025-10-11T16:15:34.891498Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:45.392116Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/api/auth"), AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]"), AnchoredSystemPathBuf("apps/ops-ui/app/api")}
+2025-10-11T16:15:45.392179Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:45.392220Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:45.592686Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]")}
+2025-10-11T16:15:45.592703Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:45.669579Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:54.691010Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]/route.ts")}
+2025-10-11T16:15:54.691023Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:54.803549Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]/route.ts")}
+2025-10-11T16:15:54.803566Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:55.893184Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]/route.ts")}
+2025-10-11T16:15:55.893203Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:56.005656Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:15:58.092052Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/auth"), AnchoredSystemPathBuf("apps/ops-ui/app/auth/signin")}
+2025-10-11T16:15:58.092100Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:15:58.092131Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:17:30.391367Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/auth/signin/page.tsx")}
+2025-10-11T16:17:30.391472Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:17:30.515432Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/auth/signin/page.tsx")}
+2025-10-11T16:17:30.515447Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:17:30.515475Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-11T16:18:01.490771Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/tsconfig.json")}
+2025-10-11T16:18:01.490797Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:18:39.998555Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/components/ui/badge.tsx")}
+2025-10-11T16:18:39.998601Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:19:03.891725Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/dashboard/page.tsx")}
+2025-10-11T16:19:03.891741Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:19:41.593009Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/ops-ui/app/dashboard/page.tsx"), AnchoredSystemPathBuf("apps/ops-ui/app/api/auth/[...nextauth]/route.ts"), AnchoredSystemPathBuf("apps/ops-ui/components/ui/badge.tsx"), AnchoredSystemPathBuf("apps/ops-ui/app/auth/signin/page.tsx"), AnchoredSystemPathBuf("apps/ops-ui/tsconfig.json")}
+2025-10-11T16:19:41.593046Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@ops-ui/automation"), path: AnchoredSystemPathBuf("apps/ops-ui") }}))
+2025-10-11T16:19:41.657101Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun

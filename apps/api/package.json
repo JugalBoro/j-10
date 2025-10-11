@@ -58,7 +58,7 @@
     "@types/node": "^20.10.0",
     "@types/passport-jwt": "^3.0.13",
     "@types/passport-google-oauth20": "^2.0.14",
-    "@types/passport-microsoft": "^0.1.0",
+    "@types/passport-microsoft": "^2.1.0",
     "@types/bull": "^4.10.0",
     "@types/nodemailer": "^6.4.14",
     "@types/compression": "^1.7.5",
