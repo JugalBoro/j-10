@@ -1,27 +1,14 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SessionProvider } from 'next-auth/react';
-import { useState } from 'react';
+import { ApiQueryProvider } from '@/lib/api/query';
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000, // 1 minute
-        retry: (failureCount, error: any) => {
-          if (error?.status === 404) return false;
-          return failureCount < 3;
-        },
-      },
-    },
-  }));
-
   return (
     <SessionProvider>
-      <QueryClientProvider client={queryClient}>
+      <ApiQueryProvider>
         {children}
-      </QueryClientProvider>
+      </ApiQueryProvider>
     </SessionProvider>
   );
 }

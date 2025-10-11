@@ -1,9 +1,9 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useRunsStats, useRuns } from '@/lib/api/query';
 import { 
   Activity, 
   Users, 
@@ -16,25 +16,10 @@ import {
 } from 'lucide-react';
 
 export function DashboardClient() {
-  const { data: stats, isLoading } = useQuery({
-    queryKey: ['dashboard-stats'],
-    queryFn: async () => {
-      const response = await fetch('/api/v1/runs/stats');
-      if (!response.ok) throw new Error('Failed to fetch stats');
-      return response.json();
-    },
-  });
+  const { data: stats, isLoading: statsLoading } = useRunsStats();
+  const { data: recentRuns, isLoading: runsLoading } = useRuns({ limit: 5 });
 
-  const { data: recentRuns } = useQuery({
-    queryKey: ['recent-runs'],
-    queryFn: async () => {
-      const response = await fetch('/api/v1/runs?limit=5');
-      if (!response.ok) throw new Error('Failed to fetch recent runs');
-      return response.json();
-    },
-  });
-
-  if (isLoading) {
+  if (statsLoading || runsLoading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-500"></div>
@@ -59,7 +44,7 @@ export function DashboardClient() {
             <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats?.total || 0}</div>
+            <div className="text-2xl font-bold">{stats?.data?.total || 0}</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -73,7 +58,7 @@ export function DashboardClient() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {stats?.successRate ? `${stats.successRate.toFixed(1)}%` : '0%'}
+              {stats?.data?.successRate ? `${stats.data.successRate.toFixed(1)}%` : '0%'}
             </div>
             <p className="text-xs text-muted-foreground">
               +2.3% from last month

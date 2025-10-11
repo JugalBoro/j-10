@@ -1,6 +1,7 @@
 import {
   Controller,
   Post,
+  Get,
   Body,
   UseGuards,
   Request,
@@ -119,7 +120,7 @@ export class AuthController {
     return this.authService.oauthCallback(callbackDto);
   }
 
-  @Post('me')
+  @Get('me')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
