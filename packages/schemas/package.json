@@ -1,0 +1,22 @@
+{
+  "name": "@schemas/automation",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "generate": "openapi-zod-client generate --input ./dist/openapi.json --output ../sdk/src/generated"
+  },
+  "dependencies": {
+    "zod": "^3.22.4",
+    "openapi-zod-client": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  }
+}
