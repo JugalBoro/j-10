@@ -1,0 +1,453 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  role        UserRole
+  orgId       String
+  providerId  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lastLoginAt DateTime?
+  isActive    Boolean  @default(true)
+  avatar      String?
+
+  // Relations
+  org         Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  workflows   Workflow[]
+  runs        Run[]
+  approvals   Approval[]
+  schedules   Schedule[]
+  evidence    Evidence[]
+  webhooks    Webhook[]
+  dlqMessages DLQMessage[]
+
+  @@map("users")
+}
+
+model Org {
+  id           String      @id @default(cuid())
+  name         String
+  plan         OrgPlan     @default(FREE)
+  settings     Json        @default("{}")
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  isActive     Boolean     @default(true)
+  domain       String?
+  logo         String?
+  billingEmail String?
+
+  // Relations
+  users        User[]
+  connectors   Connector[]
+  workflows    Workflow[]
+  runs         Run[]
+  rules        Rule[]
+  approvals    Approval[]
+  schedules    Schedule[]
+  evidence     Evidence[]
+  webhooks     Webhook[]
+  dlqMessages  DLQMessage[]
+
+  @@map("orgs")
+}
+
+model Connector {
+  id           String           @id @default(cuid())
+  orgId        String
+  type         ConnectorType
+  name         String
+  status       ConnectorStatus  @default(ACTIVE)
+  settings     Json             @default("{}")
+  secretsKmsRef String?
+  health       Json?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  lastUsedAt   DateTime?
+  isSandbox    Boolean          @default(false)
+
+  // Relations
+  org          Org              @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("connectors")
+}
+
+model Workflow {
+  id            String         @id @default(cuid())
+  orgId         String
+  name          String
+  version       String         @default("1.0.0")
+  spec          Json
+  status        WorkflowStatus @default(DRAFT)
+  enabled       Boolean        @default(true)
+  createdBy     String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  lastRunAt     DateTime?
+  runCount      Int            @default(0)
+  successCount  Int            @default(0)
+  failureCount  Int            @default(0)
+  avgDuration   Float?
+
+  // Relations
+  org           Org            @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  creator       User           @relation(fields: [createdBy], references: [id])
+  runs          Run[]
+  schedules     Schedule[]
+
+  @@map("workflows")
+}
+
+model Run {
+  id              String     @id @default(cuid())
+  orgId           String
+  workflowId      String
+  status          RunStatus  @default(QUEUED)
+  input           Json?
+  output          Json?
+  error           String?
+  idempotencyKey  String?    @unique
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  duration        Int?
+  createdBy       String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  priority        Int        @default(5)
+  tags            String[]   @default([])
+  metadata        Json?
+
+  // Relations
+  org             Org        @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  workflow        Workflow   @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  creator         User?      @relation(fields: [createdBy], references: [id])
+  steps           RunStep[]
+  approvals       Approval[]
+  evidence        Evidence[]
+
+  @@map("runs")
+}
+
+model RunStep {
+  id              String        @id @default(cuid())
+  runId           String
+  name            String
+  status          RunStepStatus @default(PENDING)
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  logsUrl         String?
+  artifactUrl     String?
+  metrics         Json?
+  error           String?
+  retryCount      Int           @default(0)
+  maxRetries      Int           @default(3)
+  timeout         Int?
+  requiresApproval Boolean      @default(false)
+  approvalId      String?
+
+  // Relations
+  run             Run          @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@map("run_steps")
+}
+
+model Rule {
+  id          String   @id @default(cuid())
+  orgId       String
+  name        String
+  description String?
+  jsonLogic   Json
+  enabled     Boolean  @default(true)
+  priority    Int      @default(50)
+  tags        String[] @default([])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String
+  lastUsedAt  DateTime?
+  usageCount  Int      @default(0)
+
+  // Relations
+  org         Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("rules")
+}
+
+model Approval {
+  id              String        @id @default(cuid())
+  orgId           String
+  runId           String
+  stepId          String?
+  state           ApprovalState @default(PENDING)
+  actorId         String?
+  reason          String?
+  metadata        Json?
+  createdAt       DateTime      @default(now())
+  actedAt         DateTime?
+  expiresAt       DateTime?
+  createdBy       String
+  approverEmail   String?
+  approverName    String?
+  slaHours        Int?
+  reminderSentAt  DateTime?
+  reminderCount   Int           @default(0)
+
+  // Relations
+  org             Org           @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  run             Run           @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@map("approvals")
+}
+
+model Schedule {
+  id            String   @id @default(cuid())
+  orgId         String
+  workflowId    String
+  name          String
+  description   String?
+  cron          String
+  timezone      String   @default("UTC")
+  enabled       Boolean  @default(true)
+  input         Json?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  createdBy     String
+  lastRunAt     DateTime?
+  nextRunAt     DateTime?
+  runCount      Int      @default(0)
+  successCount  Int      @default(0)
+  failureCount  Int      @default(0)
+
+  // Relations
+  org           Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  workflow      Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@map("schedules")
+}
+
+model Evidence {
+  id          String       @id @default(cuid())
+  runId       String
+  stepId      String?
+  type        EvidenceType
+  name        String
+  description String?
+  s3Key       String
+  s3Bucket    String
+  s3Region    String
+  url         String
+  size        Int
+  hash        String
+  mimeType    String?
+  metadata    Json?
+  createdAt   DateTime     @default(now())
+  createdBy   String?
+  tags        String[]     @default([])
+  isPublic    Boolean      @default(false)
+  expiresAt   DateTime?
+
+  // Relations
+  run         Run          @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@map("evidence")
+}
+
+model DLQMessage {
+  id            String           @id @default(cuid())
+  queue         String
+  payload       Json
+  error         String?
+  firstSeenAt   DateTime         @default(now())
+  lastTriedAt   DateTime?
+  tries         Int              @default(0)
+  maxTries      Int              @default(3)
+  status        DLQMessageStatus @default(PENDING)
+  metadata      Json?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  replayedAt    DateTime?
+  quarantinedAt DateTime?
+  archivedAt    DateTime?
+
+  // Relations
+  org           Org              @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId         String
+
+  @@map("dlq_messages")
+}
+
+model Webhook {
+  id              String        @id @default(cuid())
+  orgId           String
+  source          WebhookSource
+  event           WebhookEvent
+  url             String
+  secret          String
+  enabled         Boolean       @default(true)
+  metadata        Json?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  createdBy       String
+  lastTriggeredAt DateTime?
+  triggerCount    Int           @default(0)
+  successCount    Int           @default(0)
+  failureCount    Int           @default(0)
+
+  // Relations
+  org             Org           @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("webhooks")
+}
+
+model IdempotencyKey {
+  key       String   @id
+  scope     String
+  createdAt DateTime @default(now())
+  ttl       Int      @default(3600) // 1 hour
+
+  @@map("idempotency_keys")
+}
+
+// Enums
+enum UserRole {
+  ADMIN
+  MANAGER
+  OPERATOR
+  VIEWER
+  APPROVER
+}
+
+enum OrgPlan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum ConnectorType {
+  SLACK
+  GMAIL
+  OUTLOOK
+  GOOGLE_CALENDAR
+  MICROSOFT_CALENDAR
+  GOOGLE_DRIVE
+  JIRA
+  GITHUB
+  SALESFORCE
+  HUBSPOT
+  ZENDESK
+  WORKDAY
+  ERP
+  WEBHOOK
+}
+
+enum ConnectorStatus {
+  ACTIVE
+  INACTIVE
+  ERROR
+  PENDING_AUTH
+  RATE_LIMITED
+}
+
+enum WorkflowStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum RunStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELLED
+  NEEDS_APPROVAL
+  TIMEOUT
+}
+
+enum RunStepStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+  SKIPPED
+  CANCELLED
+}
+
+enum ApprovalState {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum EvidenceType {
+  DOCUMENT
+  IMAGE
+  VIDEO
+  AUDIO
+  DATA
+  LOG
+  SCREENSHOT
+  PDF
+  EXCEL
+  CSV
+  JSON
+  XML
+  OTHER
+}
+
+enum DLQMessageStatus {
+  PENDING
+  PROCESSING
+  REPLAYED
+  QUARANTINED
+  ARCHIVED
+}
+
+enum WebhookSource {
+  GMAIL
+  OUTLOOK
+  SLACK
+  JIRA
+  GITHUB
+  SALESFORCE
+  HUBSPOT
+  ZENDESK
+  CALENDAR
+  DRIVE
+  CUSTOM
+}
+
+enum WebhookEvent {
+  EMAIL_RECEIVED
+  EMAIL_SENT
+  EMAIL_REPLIED
+  SLACK_MESSAGE
+  SLACK_REACTION
+  JIRA_ISSUE_CREATED
+  JIRA_ISSUE_UPDATED
+  JIRA_ISSUE_DELETED
+  GITHUB_PUSH
+  GITHUB_PULL_REQUEST
+  SALESFORCE_LEAD
+  SALESFORCE_OPPORTUNITY
+  HUBSPOT_CONTACT
+  HUBSPOT_DEAL
+  ZENDESK_TICKET
+  CALENDAR_EVENT
+  DRIVE_FILE
+  CUSTOM
+}
