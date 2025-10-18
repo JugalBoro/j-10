@@ -12,19 +12,19 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { DlqService } from './dlq.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  DLQListQuerySchema,
-  DLQReplayRequestSchema,
+  DLQListQuery,
+  DLQReplayRequest,
   DLQReplayResponseSchema,
-  DLQQuarantineRequestSchema,
+  DLQQuarantineRequest,
   DLQQuarantineResponseSchema,
-  DLQArchiveRequestSchema,
+  DLQArchiveRequest,
   DLQArchiveResponseSchema,
-  DLQExportRequestSchema,
+  DLQExportRequest,
   DLQExportResponseSchema,
   DLQStatsSchema,
-  DLQRetryRequestSchema,
+  DLQRetryRequest,
   DLQRetryResponseSchema,
-  DLQDeleteRequestSchema,
+  DLQDeleteRequest,
   DLQDeleteResponseSchema,
 } from '@schemas/automation';
 
@@ -38,7 +38,7 @@ export class DlqController {
   @Get()
   @ApiOperation({ summary: 'List DLQ messages' })
   @ApiResponse({ status: 200, description: 'List of DLQ messages' })
-  async getDLQMessages(@Query() query: DLQListQuerySchema) {
+  async getDLQMessages(@Query() query: DLQListQuery) {
     return this.dlqService.getDLQMessages(query);
   }
 
@@ -53,28 +53,28 @@ export class DlqController {
   @Post('replay')
   @ApiOperation({ summary: 'Replay DLQ messages' })
   @ApiResponse({ status: 200, description: 'Messages replayed' })
-  async replayDLQMessages(@Body() replayDto: DLQReplayRequestSchema) {
+  async replayDLQMessages(@Body() replayDto: DLQReplayRequest) {
     return this.dlqService.replayDLQMessages(replayDto);
   }
 
   @Post('quarantine')
   @ApiOperation({ summary: 'Quarantine DLQ messages' })
   @ApiResponse({ status: 200, description: 'Messages quarantined' })
-  async quarantineDLQMessages(@Body() quarantineDto: DLQQuarantineRequestSchema) {
+  async quarantineDLQMessages(@Body() quarantineDto: DLQQuarantineRequest) {
     return this.dlqService.quarantineDLQMessages(quarantineDto);
   }
 
   @Post('archive')
   @ApiOperation({ summary: 'Archive DLQ messages' })
   @ApiResponse({ status: 200, description: 'Messages archived' })
-  async archiveDLQMessages(@Body() archiveDto: DLQArchiveRequestSchema) {
+  async archiveDLQMessages(@Body() archiveDto: DLQArchiveRequest) {
     return this.dlqService.archiveDLQMessages(archiveDto);
   }
 
   @Post('export')
   @ApiOperation({ summary: 'Export DLQ messages' })
   @ApiResponse({ status: 200, description: 'Export created' })
-  async exportDLQMessages(@Body() exportDto: DLQExportRequestSchema) {
+  async exportDLQMessages(@Body() exportDto: DLQExportRequest) {
     return this.dlqService.exportDLQMessages(exportDto);
   }
 
@@ -84,7 +84,7 @@ export class DlqController {
   @ApiResponse({ status: 404, description: 'DLQ message not found' })
   async retryDLQMessage(
     @Param('id') id: string,
-    @Body() retryDto: DLQRetryRequestSchema
+    @Body() retryDto: DLQRetryRequest
   ) {
     return this.dlqService.retryDLQMessage(id, retryDto);
   }
@@ -92,7 +92,7 @@ export class DlqController {
   @Post('delete')
   @ApiOperation({ summary: 'Delete DLQ messages' })
   @ApiResponse({ status: 200, description: 'Messages deleted' })
-  async deleteDLQMessages(@Body() deleteDto: DLQDeleteRequestSchema) {
+  async deleteDLQMessages(@Body() deleteDto: DLQDeleteRequest) {
     return this.dlqService.deleteDLQMessages(deleteDto);
   }
 

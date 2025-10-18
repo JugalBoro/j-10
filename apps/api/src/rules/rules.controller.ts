@@ -14,12 +14,12 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { RulesService } from './rules.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateRuleRequestSchema,
-  UpdateRuleRequestSchema,
-  RuleListQuerySchema,
-  RuleTestRequestSchema,
+  CreateRuleRequest,
+  UpdateRuleRequest,
+  RuleListQuery,
+  RuleTestRequest,
   RuleTestResponseSchema,
-  RuleEvaluateRequestSchema,
+  RuleEvaluateRequest,
   RuleEvaluateResponseSchema,
   RuleStatsSchema,
 } from '@schemas/automation';
@@ -34,7 +34,7 @@ export class RulesController {
   @Get()
   @ApiOperation({ summary: 'List rules' })
   @ApiResponse({ status: 200, description: 'List of rules' })
-  async getRules(@Query() query: RuleListQuerySchema) {
+  async getRules(@Query() query: RuleListQuery) {
     return this.rulesService.getRules(query);
   }
 
@@ -50,7 +50,7 @@ export class RulesController {
   @ApiOperation({ summary: 'Create rule' })
   @ApiResponse({ status: 201, description: 'Rule created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createRule(@Body() createRuleDto: CreateRuleRequestSchema) {
+  async createRule(@Body() createRuleDto: CreateRuleRequest) {
     return this.rulesService.createRule(createRuleDto);
   }
 
@@ -60,7 +60,7 @@ export class RulesController {
   @ApiResponse({ status: 404, description: 'Rule not found' })
   async updateRule(
     @Param('id') id: string,
-    @Body() updateRuleDto: UpdateRuleRequestSchema
+    @Body() updateRuleDto: UpdateRuleRequest
   ) {
     return this.rulesService.updateRule(id, updateRuleDto);
   }
@@ -76,14 +76,14 @@ export class RulesController {
   @Post('test')
   @ApiOperation({ summary: 'Test rule' })
   @ApiResponse({ status: 200, description: 'Rule test result' })
-  async testRule(@Body() testDto: RuleTestRequestSchema) {
+  async testRule(@Body() testDto: RuleTestRequest) {
     return this.rulesService.testRule(testDto);
   }
 
   @Post('evaluate')
   @ApiOperation({ summary: 'Evaluate rule' })
   @ApiResponse({ status: 200, description: 'Rule evaluation result' })
-  async evaluateRule(@Body() evaluateDto: RuleEvaluateRequestSchema) {
+  async evaluateRule(@Body() evaluateDto: RuleEvaluateRequest) {
     return this.rulesService.evaluateRule(evaluateDto);
   }
 

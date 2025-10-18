@@ -2,12 +2,12 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateWorkflowRequestSchema,
-  UpdateWorkflowRequestSchema,
-  WorkflowListQuerySchema,
-  WorkflowRunRequestSchema,
+  CreateWorkflowRequest,
+  UpdateWorkflowRequest,
+  WorkflowListQuery,
+  WorkflowRunRequest,
   WorkflowRunResponseSchema,
-  WorkflowTestRequestSchema,
+  WorkflowTestRequest,
   WorkflowTestResponseSchema,
 } from '@schemas/automation';
 
@@ -15,7 +15,7 @@ import {
 export class WorkflowsService {
   constructor(private prisma: PrismaService) {}
 
-  async getWorkflows(query: WorkflowListQuerySchema) {
+  async getWorkflows(query: WorkflowListQuery) {
     const {
       orgId,
       status,
@@ -148,7 +148,7 @@ export class WorkflowsService {
     };
   }
 
-  async createWorkflow(createWorkflowDto: CreateWorkflowRequestSchema) {
+  async createWorkflow(createWorkflowDto: CreateWorkflowRequest) {
     const { name, spec, enabled } = createWorkflowDto;
 
     // Validate workflow spec
@@ -187,7 +187,7 @@ export class WorkflowsService {
     };
   }
 
-  async updateWorkflow(id: string, updateWorkflowDto: UpdateWorkflowRequestSchema) {
+  async updateWorkflow(id: string, updateWorkflowDto: UpdateWorkflowRequest) {
     const { name, spec, status, enabled } = updateWorkflowDto;
 
     const workflow = await this.prisma.workflow.findUnique({
@@ -252,7 +252,7 @@ export class WorkflowsService {
     return { message: 'Workflow deleted successfully' };
   }
 
-  async runWorkflow(runDto: WorkflowRunRequestSchema) {
+  async runWorkflow(runDto: WorkflowRunRequest) {
     const { workflowId, input, idempotencyKey, priority } = runDto;
 
     const workflow = await this.prisma.workflow.findUnique({
@@ -305,7 +305,7 @@ export class WorkflowsService {
     };
   }
 
-  async testWorkflow(testDto: WorkflowTestRequestSchema) {
+  async testWorkflow(testDto: WorkflowTestRequest) {
     const { spec, input, stepId } = testDto;
 
     // Validate workflow spec

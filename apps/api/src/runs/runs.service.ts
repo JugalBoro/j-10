@@ -2,10 +2,10 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  RunListQuerySchema,
-  RunRetryRequestSchema,
-  RunCancelRequestSchema,
-  RunLogsQuerySchema,
+  RunListQuery,
+  RunRetryRequest,
+  RunCancelRequest,
+  RunLogsQuery,
   RunLogsResponseSchema,
   RunStatsSchema,
 } from '@schemas/automation';
@@ -14,7 +14,7 @@ import {
 export class RunsService {
   constructor(private prisma: PrismaService) {}
 
-  async getRuns(query: RunListQuerySchema) {
+  async getRuns(query: RunListQuery) {
     const {
       orgId,
       workflowId,
@@ -220,7 +220,7 @@ export class RunsService {
     };
   }
 
-  async retryRun(id: string, retryDto: RunRetryRequestSchema) {
+  async retryRun(id: string, retryDto: RunRetryRequest) {
     const { fromStep, input, idempotencyKey } = retryDto;
 
     const run = await this.prisma.run.findUnique({
@@ -266,7 +266,7 @@ export class RunsService {
     };
   }
 
-  async cancelRun(id: string, cancelDto: RunCancelRequestSchema) {
+  async cancelRun(id: string, cancelDto: RunCancelRequest) {
     const { reason } = cancelDto;
 
     const run = await this.prisma.run.findUnique({
@@ -295,7 +295,7 @@ export class RunsService {
     return { message: 'Run cancelled successfully' };
   }
 
-  async getRunLogs(id: string, query: RunLogsQuerySchema) {
+  async getRunLogs(id: string, query: RunLogsQuery) {
     const { stepId, level, since, limit = 100 } = query;
 
     const run = await this.prisma.run.findUnique({

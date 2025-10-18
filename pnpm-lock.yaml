@@ -150,6 +150,9 @@ importers:
       '@types/passport-microsoft':
         specifier: ^2.1.0
         version: 2.1.0
+      '@types/passport-oauth2':
+        specifier: ^1.8.0
+        version: 1.8.0
       '@types/supertest':
         specifier: ^6.0.2
         version: 6.0.3

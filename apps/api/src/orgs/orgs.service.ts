@@ -2,8 +2,8 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateOrgRequestSchema,
-  UpdateOrgRequestSchema,
+  CreateOrgRequest,
+  UpdateOrgRequest,
   OrgStatsSchema,
 } from '@schemas/automation';
 
@@ -81,7 +81,7 @@ export class OrgsService {
     };
   }
 
-  async createOrg(createOrgDto: CreateOrgRequestSchema) {
+  async createOrg(createOrgDto: CreateOrgRequest) {
     const { name, plan, settings, domain, billingEmail } = createOrgDto;
 
     // Check if domain is already taken
@@ -121,7 +121,7 @@ export class OrgsService {
     };
   }
 
-  async updateOrg(id: string, updateOrgDto: UpdateOrgRequestSchema) {
+  async updateOrg(id: string, updateOrgDto: UpdateOrgRequest) {
     const { name, plan, settings, domain, billingEmail, isActive, logo } = updateOrgDto;
 
     const org = await this.prisma.org.findUnique({

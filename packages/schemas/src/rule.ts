@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { IdSchema, DateTimeSchema, JsonSchema } from './common';
 
-export const JsonLogicSchema = z.object({
+export const JsonLogicSchema: z.ZodType<any> = z.object({
   and: z.array(z.lazy(() => JsonLogicSchema)).optional(),
   or: z.array(z.lazy(() => JsonLogicSchema)).optional(),
   not: z.lazy(() => JsonLogicSchema).optional(),

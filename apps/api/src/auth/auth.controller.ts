@@ -23,6 +23,16 @@ import {
   ResetPasswordConfirmSchema,
   VerifyEmailRequestSchema,
   AuthCallbackSchema,
+  type LoginRequest,
+  type LoginResponse,
+  type RefreshTokenRequest,
+  type RefreshTokenResponse,
+  type LogoutRequest,
+  type ChangePasswordRequest,
+  type ResetPasswordRequest,
+  type ResetPasswordConfirm,
+  type VerifyEmailRequest,
+  type AuthCallback,
 } from '@schemas/automation';
 
 @ApiTags('auth')
@@ -35,7 +45,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Login user' })
   @ApiResponse({ status: 200, description: 'Login successful' })
   @ApiResponse({ status: 401, description: 'Invalid credentials' })
-  async login(@Body() loginDto: LoginRequestSchema): Promise<LoginResponseSchema> {
+  async login(@Body() loginDto: LoginRequest): Promise<LoginResponse> {
     return this.authService.login(loginDto);
   }
 
@@ -45,8 +55,8 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Token refreshed successfully' })
   @ApiResponse({ status: 401, description: 'Invalid refresh token' })
   async refreshToken(
-    @Body() refreshDto: RefreshTokenRequestSchema
-  ): Promise<RefreshTokenResponseSchema> {
+    @Body() refreshDto: RefreshTokenRequest
+  ): Promise<RefreshTokenResponse> {
     return this.authService.refreshToken(refreshDto.refreshToken);
   }
 
@@ -58,7 +68,7 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Logout successful' })
   async logout(
     @Request() req: any,
-    @Body() logoutDto: LogoutRequestSchema
+    @Body() logoutDto: LogoutRequest
   ): Promise<{ message: string }> {
     return this.authService.logout(req.user.id, logoutDto.refreshToken);
   }
@@ -72,7 +82,7 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Invalid current password' })
   async changePassword(
     @Request() req: any,
-    @Body() changePasswordDto: ChangePasswordRequestSchema
+    @Body() changePasswordDto: ChangePasswordRequest
   ): Promise<{ message: string }> {
     return this.authService.changePassword(req.user.id, changePasswordDto);
   }
@@ -82,7 +92,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Request password reset' })
   @ApiResponse({ status: 200, description: 'Reset email sent' })
   async resetPassword(
-    @Body() resetDto: ResetPasswordRequestSchema
+    @Body() resetDto: ResetPasswordRequest
   ): Promise<{ message: string }> {
     return this.authService.resetPassword(resetDto.email);
   }
@@ -93,7 +103,7 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Password reset successfully' })
   @ApiResponse({ status: 400, description: 'Invalid or expired token' })
   async resetPasswordConfirm(
-    @Body() confirmDto: ResetPasswordConfirmSchema
+    @Body() confirmDto: ResetPasswordConfirm
   ): Promise<{ message: string }> {
     return this.authService.resetPasswordConfirm(confirmDto);
   }
@@ -104,9 +114,9 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Email verified successfully' })
   @ApiResponse({ status: 400, description: 'Invalid or expired token' })
   async verifyEmail(
-    @Body() verifyDto: VerifyEmailRequestSchema
+    @Body() verifyDto: VerifyEmailRequest
   ): Promise<{ message: string }> {
-    return this.authService.verifyEmail(verifyDto.token);
+    return this.authService.verifyEmail(verifyDto);
   }
 
   @Post('callback/:provider')
@@ -115,8 +125,8 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'OAuth callback processed' })
   async oauthCallback(
     @Request() req: any,
-    @Body() callbackDto: AuthCallbackSchema
-  ): Promise<LoginResponseSchema> {
+    @Body() callbackDto: AuthCallback
+  ): Promise<LoginResponse> {
     return this.authService.oauthCallback(callbackDto);
   }
 

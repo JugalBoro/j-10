@@ -2,9 +2,9 @@ import { Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
 import { PrismaService } from '../../prisma/prisma.service';
 import { logger } from '@common/automation';
-import { WorkflowService } from '../workflow/workflow.service';
-import { ConnectorService } from '../connector/connector.service';
-import { NotificationService } from '../notification/notification.service';
+import { WorkflowService } from '../../workflow/workflow.service';
+import { ConnectorService } from '../../connector/connector.service';
+import { NotificationService } from '../../notification/notification.service';
 
 @Processor('accessreview-queue')
 export class AccessReviewQueueProcessor {

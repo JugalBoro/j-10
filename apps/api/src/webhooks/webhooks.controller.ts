@@ -14,13 +14,13 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { WebhooksService } from './webhooks.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateWebhookRequestSchema,
-  UpdateWebhookRequestSchema,
-  WebhookListQuerySchema,
-  WebhookTestRequestSchema,
+  CreateWebhookRequest,
+  UpdateWebhookRequest,
+  WebhookListQuery,
+  WebhookTestRequest,
   WebhookTestResponseSchema,
-  WebhookDeliveryListQuerySchema,
-  WebhookRetryRequestSchema,
+  WebhookDeliveryListQuery,
+  WebhookRetryRequest,
   WebhookRetryResponseSchema,
   WebhookStatsSchema,
 } from '@schemas/automation';
@@ -35,7 +35,7 @@ export class WebhooksController {
   @Get()
   @ApiOperation({ summary: 'List webhooks' })
   @ApiResponse({ status: 200, description: 'List of webhooks' })
-  async getWebhooks(@Query() query: WebhookListQuerySchema) {
+  async getWebhooks(@Query() query: WebhookListQuery) {
     return this.webhooksService.getWebhooks(query);
   }
 
@@ -51,7 +51,7 @@ export class WebhooksController {
   @ApiOperation({ summary: 'Create webhook' })
   @ApiResponse({ status: 201, description: 'Webhook created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createWebhook(@Body() createWebhookDto: CreateWebhookRequestSchema) {
+  async createWebhook(@Body() createWebhookDto: CreateWebhookRequest) {
     return this.webhooksService.createWebhook(createWebhookDto);
   }
 
@@ -61,7 +61,7 @@ export class WebhooksController {
   @ApiResponse({ status: 404, description: 'Webhook not found' })
   async updateWebhook(
     @Param('id') id: string,
-    @Body() updateWebhookDto: UpdateWebhookRequestSchema
+    @Body() updateWebhookDto: UpdateWebhookRequest
   ) {
     return this.webhooksService.updateWebhook(id, updateWebhookDto);
   }
@@ -77,14 +77,14 @@ export class WebhooksController {
   @Post('test')
   @ApiOperation({ summary: 'Test webhook' })
   @ApiResponse({ status: 200, description: 'Webhook test result' })
-  async testWebhook(@Body() testDto: WebhookTestRequestSchema) {
+  async testWebhook(@Body() testDto: WebhookTestRequest) {
     return this.webhooksService.testWebhook(testDto);
   }
 
   @Get('deliveries')
   @ApiOperation({ summary: 'List webhook deliveries' })
   @ApiResponse({ status: 200, description: 'List of webhook deliveries' })
-  async getWebhookDeliveries(@Query() query: WebhookDeliveryListQuerySchema) {
+  async getWebhookDeliveries(@Query() query: WebhookDeliveryListQuery) {
     return this.webhooksService.getWebhookDeliveries(query);
   }
 
@@ -94,7 +94,7 @@ export class WebhooksController {
   @ApiResponse({ status: 404, description: 'Webhook delivery not found' })
   async retryWebhookDelivery(
     @Param('id') id: string,
-    @Body() retryDto: WebhookRetryRequestSchema
+    @Body() retryDto: WebhookRetryRequest
   ) {
     return this.webhooksService.retryWebhookDelivery(id, retryDto);
   }

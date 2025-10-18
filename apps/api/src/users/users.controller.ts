@@ -14,12 +14,12 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateUserRequestSchema,
-  UpdateUserRequestSchema,
-  UserListQuerySchema,
-  UserInviteRequestSchema,
+  CreateUserRequest,
+  UpdateUserRequest,
+  UserListQuery,
+  UserInviteRequest,
   UserInviteResponseSchema,
-  AcceptInviteRequestSchema,
+  AcceptInviteRequest,
   PaginatedResponseSchema,
   UserSchema,
 } from '@schemas/automation';
@@ -34,7 +34,7 @@ export class UsersController {
   @Get()
   @ApiOperation({ summary: 'List users' })
   @ApiResponse({ status: 200, description: 'List of users' })
-  async getUsers(@Query() query: UserListQuerySchema) {
+  async getUsers(@Query() query: UserListQuery) {
     return this.usersService.getUsers(query);
   }
 
@@ -50,7 +50,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ status: 201, description: 'User created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createUser(@Body() createUserDto: CreateUserRequestSchema) {
+  async createUser(@Body() createUserDto: CreateUserRequest) {
     return this.usersService.createUser(createUserDto);
   }
 
@@ -60,7 +60,7 @@ export class UsersController {
   @ApiResponse({ status: 404, description: 'User not found' })
   async updateUser(
     @Param('id') id: string,
-    @Body() updateUserDto: UpdateUserRequestSchema
+    @Body() updateUserDto: UpdateUserRequest
   ) {
     return this.usersService.updateUser(id, updateUserDto);
   }
@@ -76,14 +76,14 @@ export class UsersController {
   @Post('invite')
   @ApiOperation({ summary: 'Invite user' })
   @ApiResponse({ status: 201, description: 'Invitation sent' })
-  async inviteUser(@Body() inviteDto: UserInviteRequestSchema) {
+  async inviteUser(@Body() inviteDto: UserInviteRequest) {
     return this.usersService.inviteUser(inviteDto);
   }
 
   @Post('accept-invite')
   @ApiOperation({ summary: 'Accept invitation' })
   @ApiResponse({ status: 200, description: 'Invitation accepted' })
-  async acceptInvite(@Body() acceptDto: AcceptInviteRequestSchema) {
+  async acceptInvite(@Body() acceptDto: AcceptInviteRequest) {
     return this.usersService.acceptInvite(acceptDto);
   }
 }

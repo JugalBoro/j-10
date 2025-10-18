@@ -1,5 +1,20 @@
 export * from './auth';
-export * from './user';
+export { 
+  UserSchema,
+  CreateUserRequestSchema,
+  UpdateUserRequestSchema,
+  UserListQuerySchema,
+  UserInviteRequestSchema,
+  UserInviteResponseSchema,
+  AcceptInviteRequestSchema,
+  type User,
+  type CreateUserRequest,
+  type UpdateUserRequest,
+  type UserListQuery,
+  type UserInviteRequest,
+  type UserInviteResponse,
+  type AcceptInviteRequest
+} from './user';
 export * from './org';
 export * from './connector';
 export * from './workflow';

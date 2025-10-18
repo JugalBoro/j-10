@@ -2,9 +2,9 @@ import { Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
 import { PrismaService } from '../../prisma/prisma.service';
 import { logger } from '@common/automation';
-import { WorkflowService } from '../workflow/workflow.service';
-import { ConnectorService } from '../connector/connector.service';
-import { NotificationService } from '../notification/notification.service';
+import { WorkflowService } from '../../workflow/workflow.service';
+import { ConnectorService } from '../../connector/connector.service';
+import { NotificationService } from '../../notification/notification.service';
 
 @Processor('triage-queue')
 export class TriageQueueProcessor {
@@ -37,7 +37,7 @@ export class TriageQueueProcessor {
 
       // Step 1: Classify Ticket
       const classifyStep = await this.createRunStep(runId, 'classify', 'Classify Ticket');
-      const classification = await this.classifyTicket(input);
+      const classification = await this.performTicketClassification(input);
       await this.completeRunStep(classifyStep.id, classification);
 
       // Step 2: Assign to Queue
@@ -109,7 +109,7 @@ export class TriageQueueProcessor {
     });
   }
 
-  private async classifyTicket(input: any) {
+  private async performTicketClassification(input: any) {
     // In a real implementation, you would:
     // 1. Use LLM to classify the ticket
     // 2. Apply business rules

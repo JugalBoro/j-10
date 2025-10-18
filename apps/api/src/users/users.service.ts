@@ -2,12 +2,12 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateUserRequestSchema,
-  UpdateUserRequestSchema,
-  UserListQuerySchema,
-  UserInviteRequestSchema,
+  CreateUserRequest,
+  UpdateUserRequest,
+  UserListQuery,
+  UserInviteRequest,
   UserInviteResponseSchema,
-  AcceptInviteRequestSchema,
+  AcceptInviteRequest,
   PaginatedResponseSchema,
   UserSchema,
 } from '@schemas/automation';
@@ -16,7 +16,7 @@ import {
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  async getUsers(query: UserListQuerySchema) {
+  async getUsers(query: UserListQuery) {
     const {
       orgId,
       role,
@@ -114,7 +114,7 @@ export class UsersService {
     };
   }
 
-  async createUser(createUserDto: CreateUserRequestSchema) {
+  async createUser(createUserDto: CreateUserRequest) {
     const { email, name, role, orgId, providerId } = createUserDto;
 
     // Check if user already exists
@@ -165,7 +165,7 @@ export class UsersService {
     };
   }
 
-  async updateUser(id: string, updateUserDto: UpdateUserRequestSchema) {
+  async updateUser(id: string, updateUserDto: UpdateUserRequest) {
     const { name, role, isActive, avatar } = updateUserDto;
 
     const user = await this.prisma.user.findUnique({
@@ -224,7 +224,7 @@ export class UsersService {
     return { message: 'User deleted successfully' };
   }
 
-  async inviteUser(inviteDto: UserInviteRequestSchema) {
+  async inviteUser(inviteDto: UserInviteRequest) {
     const { email, name, role, message } = inviteDto;
 
     // Check if user already exists
@@ -254,7 +254,7 @@ export class UsersService {
     };
   }
 
-  async acceptInvite(acceptDto: AcceptInviteRequestSchema) {
+  async acceptInvite(acceptDto: AcceptInviteRequest) {
     const { token, password } = acceptDto;
 
     // In a real implementation, you would:

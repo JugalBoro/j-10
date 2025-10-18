@@ -21,6 +21,11 @@ import {
   ApprovalReminderRequestSchema,
   ApprovalReminderResponseSchema,
   ApprovalStatsSchema,
+  type ApprovalListQuery,
+  type CreateApprovalRequest,
+  type UpdateApprovalRequest,
+  type ApprovalActionRequest,
+  type ApprovalReminderRequest,
 } from '@schemas/automation';
 
 @ApiTags('approvals')
@@ -33,7 +38,7 @@ export class ApprovalsController {
   @Get()
   @ApiOperation({ summary: 'List approvals' })
   @ApiResponse({ status: 200, description: 'List of approvals' })
-  async getApprovals(@Query() query: ApprovalListQuerySchema) {
+  async getApprovals(@Query() query: ApprovalListQuery) {
     return this.approvalsService.getApprovals(query);
   }
 
@@ -49,7 +54,7 @@ export class ApprovalsController {
   @ApiOperation({ summary: 'Create approval' })
   @ApiResponse({ status: 201, description: 'Approval created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createApproval(@Body() createApprovalDto: CreateApprovalRequestSchema) {
+  async createApproval(@Body() createApprovalDto: CreateApprovalRequest) {
     return this.approvalsService.createApproval(createApprovalDto);
   }
 
@@ -59,7 +64,7 @@ export class ApprovalsController {
   @ApiResponse({ status: 404, description: 'Approval not found' })
   async updateApproval(
     @Param('id') id: string,
-    @Body() updateApprovalDto: UpdateApprovalRequestSchema
+    @Body() updateApprovalDto: UpdateApprovalRequest
   ) {
     return this.approvalsService.updateApproval(id, updateApprovalDto);
   }
@@ -70,7 +75,7 @@ export class ApprovalsController {
   @ApiResponse({ status: 404, description: 'Approval not found' })
   async actionApproval(
     @Param('id') id: string,
-    @Body() actionDto: ApprovalActionRequestSchema
+    @Body() actionDto: ApprovalActionRequest
   ) {
     return this.approvalsService.actionApproval(id, actionDto);
   }
@@ -81,7 +86,7 @@ export class ApprovalsController {
   @ApiResponse({ status: 404, description: 'Approval not found' })
   async sendReminder(
     @Param('id') id: string,
-    @Body() reminderDto: ApprovalReminderRequestSchema
+    @Body() reminderDto: ApprovalReminderRequest
   ) {
     return this.approvalsService.sendReminder(id, reminderDto);
   }

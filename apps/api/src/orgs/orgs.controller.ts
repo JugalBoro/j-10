@@ -13,8 +13,8 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { OrgsService } from './orgs.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateOrgRequestSchema,
-  UpdateOrgRequestSchema,
+  CreateOrgRequest,
+  UpdateOrgRequest,
   OrgStatsSchema,
 } from '@schemas/automation';
 
@@ -44,7 +44,7 @@ export class OrgsController {
   @ApiOperation({ summary: 'Create organization' })
   @ApiResponse({ status: 201, description: 'Organization created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createOrg(@Body() createOrgDto: CreateOrgRequestSchema) {
+  async createOrg(@Body() createOrgDto: CreateOrgRequest) {
     return this.orgsService.createOrg(createOrgDto);
   }
 
@@ -54,7 +54,7 @@ export class OrgsController {
   @ApiResponse({ status: 404, description: 'Organization not found' })
   async updateOrg(
     @Param('id') id: string,
-    @Body() updateOrgDto: UpdateOrgRequestSchema
+    @Body() updateOrgDto: UpdateOrgRequest
   ) {
     return this.orgsService.updateOrg(id, updateOrgDto);
   }

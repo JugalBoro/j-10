@@ -13,6 +13,13 @@ import {
   ResetPasswordConfirmSchema,
   VerifyEmailRequestSchema,
   AuthCallbackSchema,
+  type LoginRequest,
+  type LoginResponse,
+  type RefreshTokenResponse,
+  type ChangePasswordRequest,
+  type ResetPasswordConfirm,
+  type VerifyEmailRequest,
+  type AuthCallback,
 } from '@schemas/automation';
 
 @Injectable()
@@ -22,7 +29,7 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async login(loginDto: LoginRequestSchema): Promise<LoginResponseSchema> {
+  async login(loginDto: LoginRequest): Promise<LoginResponse> {
     const { email, password, provider, code, state } = loginDto;
 
     let user;
@@ -70,7 +77,7 @@ export class AuthService {
     };
   }
 
-  async refreshToken(refreshToken: string): Promise<RefreshTokenResponseSchema> {
+  async refreshToken(refreshToken: string): Promise<RefreshTokenResponse> {
     try {
       const payload = this.jwtService.verify(refreshToken);
       const user = await this.prisma.user.findUnique({
@@ -108,7 +115,7 @@ export class AuthService {
 
   async changePassword(
     userId: string,
-    changePasswordDto: ChangePasswordRequestSchema
+    changePasswordDto: ChangePasswordRequest
   ): Promise<{ message: string }> {
     const { currentPassword, newPassword } = changePasswordDto;
 
@@ -144,7 +151,7 @@ export class AuthService {
     return { message: 'If the email exists, a reset link has been sent' };
   }
 
-  async resetPasswordConfirm(confirmDto: ResetPasswordConfirmSchema): Promise<{ message: string }> {
+  async resetPasswordConfirm(confirmDto: ResetPasswordConfirm): Promise<{ message: string }> {
     const { token, newPassword } = confirmDto;
 
     // In a real implementation, you would verify the token
@@ -154,7 +161,7 @@ export class AuthService {
     return { message: 'Password reset successfully' };
   }
 
-  async verifyEmail(verifyDto: VerifyEmailRequestSchema): Promise<{ message: string }> {
+  async verifyEmail(verifyDto: VerifyEmailRequest): Promise<{ message: string }> {
     const { token } = verifyDto;
 
     // In a real implementation, you would verify the token
@@ -164,7 +171,7 @@ export class AuthService {
     return { message: 'Email verified successfully' };
   }
 
-  async oauthCallback(callbackDto: AuthCallbackSchema): Promise<LoginResponseSchema> {
+  async oauthCallback(callbackDto: AuthCallback): Promise<LoginResponse> {
     const { provider, code, state } = callbackDto;
 
     // In a real implementation, you would exchange the code for tokens

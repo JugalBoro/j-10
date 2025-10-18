@@ -2,12 +2,12 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateRuleRequestSchema,
-  UpdateRuleRequestSchema,
-  RuleListQuerySchema,
-  RuleTestRequestSchema,
+  CreateRuleRequest,
+  UpdateRuleRequest,
+  RuleListQuery,
+  RuleTestRequest,
   RuleTestResponseSchema,
-  RuleEvaluateRequestSchema,
+  RuleEvaluateRequest,
   RuleEvaluateResponseSchema,
   RuleStatsSchema,
 } from '@schemas/automation';
@@ -16,7 +16,7 @@ import {
 export class RulesService {
   constructor(private prisma: PrismaService) {}
 
-  async getRules(query: RuleListQuerySchema) {
+  async getRules(query: RuleListQuery) {
     const {
       orgId,
       enabled,
@@ -125,7 +125,7 @@ export class RulesService {
     };
   }
 
-  async createRule(createRuleDto: CreateRuleRequestSchema) {
+  async createRule(createRuleDto: CreateRuleRequest) {
     const { name, description, jsonLogic, enabled, priority, tags } = createRuleDto;
 
     // Validate JSON Logic
@@ -165,7 +165,7 @@ export class RulesService {
     };
   }
 
-  async updateRule(id: string, updateRuleDto: UpdateRuleRequestSchema) {
+  async updateRule(id: string, updateRuleDto: UpdateRuleRequest) {
     const { name, description, jsonLogic, enabled, priority, tags } = updateRuleDto;
 
     const rule = await this.prisma.rule.findUnique({
@@ -230,7 +230,7 @@ export class RulesService {
     return { message: 'Rule deleted successfully' };
   }
 
-  async testRule(testDto: RuleTestRequestSchema) {
+  async testRule(testDto: RuleTestRequest) {
     const { jsonLogic, data } = testDto;
 
     if (!this.isValidJsonLogic(jsonLogic)) {
@@ -266,7 +266,7 @@ export class RulesService {
     }
   }
 
-  async evaluateRule(evaluateDto: RuleEvaluateRequestSchema) {
+  async evaluateRule(evaluateDto: RuleEvaluateRequest) {
     const { ruleId, data, context } = evaluateDto;
 
     const rule = await this.prisma.rule.findUnique({

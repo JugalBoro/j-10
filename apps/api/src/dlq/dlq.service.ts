@@ -2,19 +2,19 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  DLQListQuerySchema,
-  DLQReplayRequestSchema,
+  DLQListQuery,
+  DLQReplayRequest,
   DLQReplayResponseSchema,
-  DLQQuarantineRequestSchema,
+  DLQQuarantineRequest,
   DLQQuarantineResponseSchema,
-  DLQArchiveRequestSchema,
+  DLQArchiveRequest,
   DLQArchiveResponseSchema,
-  DLQExportRequestSchema,
+  DLQExportRequest,
   DLQExportResponseSchema,
   DLQStatsSchema,
-  DLQRetryRequestSchema,
+  DLQRetryRequest,
   DLQRetryResponseSchema,
-  DLQDeleteRequestSchema,
+  DLQDeleteRequest,
   DLQDeleteResponseSchema,
 } from '@schemas/automation';
 
@@ -22,7 +22,7 @@ import {
 export class DlqService {
   constructor(private prisma: PrismaService) {}
 
-  async getDLQMessages(query: DLQListQuerySchema) {
+  async getDLQMessages(query: DLQListQuery) {
     const {
       queue,
       status,
@@ -132,7 +132,7 @@ export class DlqService {
     };
   }
 
-  async replayDLQMessages(replayDto: DLQReplayRequestSchema) {
+  async replayDLQMessages(replayDto: DLQReplayRequest) {
     const { messageIds, delay, maxTries } = replayDto;
 
     const messages = await this.prisma.dLQMessage.findMany({
@@ -171,7 +171,7 @@ export class DlqService {
     };
   }
 
-  async quarantineDLQMessages(quarantineDto: DLQQuarantineRequestSchema) {
+  async quarantineDLQMessages(quarantineDto: DLQQuarantineRequest) {
     const { messageIds, reason } = quarantineDto;
 
     const messages = await this.prisma.dLQMessage.findMany({
@@ -209,7 +209,7 @@ export class DlqService {
     };
   }
 
-  async archiveDLQMessages(archiveDto: DLQArchiveRequestSchema) {
+  async archiveDLQMessages(archiveDto: DLQArchiveRequest) {
     const { messageIds, reason } = archiveDto;
 
     const messages = await this.prisma.dLQMessage.findMany({
@@ -247,7 +247,7 @@ export class DlqService {
     };
   }
 
-  async exportDLQMessages(exportDto: DLQExportRequestSchema) {
+  async exportDLQMessages(exportDto: DLQExportRequest) {
     const { messageIds, queue, status, format, includePayload, includeError } = exportDto;
 
     const where: any = {};
@@ -295,7 +295,7 @@ export class DlqService {
     };
   }
 
-  async retryDLQMessage(id: string, retryDto: DLQRetryRequestSchema) {
+  async retryDLQMessage(id: string, retryDto: DLQRetryRequest) {
     const { delay } = retryDto;
 
     const message = await this.prisma.dLQMessage.findUnique({
@@ -330,7 +330,7 @@ export class DlqService {
     };
   }
 
-  async deleteDLQMessages(deleteDto: DLQDeleteRequestSchema) {
+  async deleteDLQMessages(deleteDto: DLQDeleteRequest) {
     const { messageIds, reason } = deleteDto;
 
     const messages = await this.prisma.dLQMessage.findMany({

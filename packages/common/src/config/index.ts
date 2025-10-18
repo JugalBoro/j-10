@@ -1,5 +1,10 @@
 import { cleanEnv, str, num, bool, url } from 'envalid';
 import { z } from 'zod';
+import { config as dotenvConfig } from 'dotenv';
+
+// Load .env file from the project root
+// The .env file is in the workspace root, so we need to go up from apps/api
+dotenvConfig({ path: '../../.env' });
 
 export const config = cleanEnv(process.env, {
   // Database

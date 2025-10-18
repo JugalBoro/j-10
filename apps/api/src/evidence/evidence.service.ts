@@ -2,9 +2,9 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateEvidenceRequestSchema,
-  EvidenceListQuerySchema,
-  EvidenceDownloadRequestSchema,
+  CreateEvidenceRequest,
+  EvidenceListQuery,
+  EvidenceDownloadRequest,
   EvidenceDownloadResponseSchema,
   EvidenceStatsSchema,
 } from '@schemas/automation';
@@ -13,7 +13,7 @@ import {
 export class EvidenceService {
   constructor(private prisma: PrismaService) {}
 
-  async getEvidence(query: EvidenceListQuerySchema) {
+  async getEvidence(query: EvidenceListQuery) {
     const {
       runId,
       stepId,
@@ -168,7 +168,7 @@ export class EvidenceService {
     };
   }
 
-  async createEvidence(createEvidenceDto: CreateEvidenceRequestSchema) {
+  async createEvidence(createEvidenceDto: CreateEvidenceRequest) {
     const {
       runId,
       stepId,
@@ -252,7 +252,7 @@ export class EvidenceService {
     };
   }
 
-  async downloadEvidence(id: string, query: EvidenceDownloadRequestSchema) {
+  async downloadEvidence(id: string, query: EvidenceDownloadRequest) {
     const { format = 'original' } = query;
 
     const evidence = await this.prisma.evidence.findUnique({

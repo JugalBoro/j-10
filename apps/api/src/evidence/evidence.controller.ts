@@ -12,9 +12,9 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { EvidenceService } from './evidence.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateEvidenceRequestSchema,
-  EvidenceListQuerySchema,
-  EvidenceDownloadRequestSchema,
+  CreateEvidenceRequest,
+  EvidenceListQuery,
+  EvidenceDownloadRequest,
   EvidenceDownloadResponseSchema,
   EvidenceStatsSchema,
 } from '@schemas/automation';
@@ -29,7 +29,7 @@ export class EvidenceController {
   @Get()
   @ApiOperation({ summary: 'List evidence' })
   @ApiResponse({ status: 200, description: 'List of evidence' })
-  async getEvidence(@Query() query: EvidenceListQuerySchema) {
+  async getEvidence(@Query() query: EvidenceListQuery) {
     return this.evidenceService.getEvidence(query);
   }
 
@@ -45,7 +45,7 @@ export class EvidenceController {
   @ApiOperation({ summary: 'Create evidence' })
   @ApiResponse({ status: 201, description: 'Evidence created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createEvidence(@Body() createEvidenceDto: CreateEvidenceRequestSchema) {
+  async createEvidence(@Body() createEvidenceDto: CreateEvidenceRequest) {
     return this.evidenceService.createEvidence(createEvidenceDto);
   }
 
@@ -55,7 +55,7 @@ export class EvidenceController {
   @ApiResponse({ status: 404, description: 'Evidence not found' })
   async downloadEvidence(
     @Param('id') id: string,
-    @Query() query: EvidenceDownloadRequestSchema
+    @Query() query: EvidenceDownloadRequest
   ) {
     return this.evidenceService.downloadEvidence(id, query);
   }

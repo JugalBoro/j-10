@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, VerifyCallback } from 'passport-microsoft';
+import { Strategy } from 'passport-microsoft';
+import { VerifyCallback } from 'passport-oauth2';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

@@ -10,13 +10,18 @@ import {
   ApprovalReminderRequestSchema,
   ApprovalReminderResponseSchema,
   ApprovalStatsSchema,
+  type ApprovalListQuery,
+  type CreateApprovalRequest,
+  type UpdateApprovalRequest,
+  type ApprovalActionRequest,
+  type ApprovalReminderRequest,
 } from '@schemas/automation';
 
 @Injectable()
 export class ApprovalsService {
   constructor(private prisma: PrismaService) {}
 
-  async getApprovals(query: ApprovalListQuerySchema) {
+  async getApprovals(query: ApprovalListQuery) {
     const {
       orgId,
       runId,
@@ -177,7 +182,7 @@ export class ApprovalsService {
     };
   }
 
-  async createApproval(createApprovalDto: CreateApprovalRequestSchema) {
+  async createApproval(createApprovalDto: CreateApprovalRequest) {
     const {
       runId,
       stepId,
@@ -254,7 +259,7 @@ export class ApprovalsService {
     };
   }
 
-  async updateApproval(id: string, updateApprovalDto: UpdateApprovalRequestSchema) {
+  async updateApproval(id: string, updateApprovalDto: UpdateApprovalRequest) {
     const { state, reason, metadata } = updateApprovalDto;
 
     const approval = await this.prisma.approval.findUnique({
@@ -280,12 +285,12 @@ export class ApprovalsService {
     });
 
     // If approved or rejected, update the run status
-    if (state === 'APPROVED' || state === 'REJECTED') {
+    if (state === 'approved' || state === 'rejected') {
       await this.prisma.run.update({
         where: { id: approval.runId },
         data: {
-          status: state === 'APPROVED' ? 'RUNNING' : 'FAILED',
-          error: state === 'REJECTED' ? reason : null,
+          status: state === 'approved' ? 'RUNNING' : 'FAILED',
+          error: state === 'rejected' ? reason : null,
         },
       });
     }
@@ -313,7 +318,7 @@ export class ApprovalsService {
     };
   }
 
-  async actionApproval(id: string, actionDto: ApprovalActionRequestSchema) {
+  async actionApproval(id: string, actionDto: ApprovalActionRequest) {
     const { action, reason, metadata } = actionDto;
 
     const approval = await this.prisma.approval.findUnique({
@@ -376,7 +381,7 @@ export class ApprovalsService {
     };
   }
 
-  async sendReminder(id: string, reminderDto: ApprovalReminderRequestSchema) {
+  async sendReminder(id: string, reminderDto: ApprovalReminderRequest) {
     const { message } = reminderDto;
 
     const approval = await this.prisma.approval.findUnique({

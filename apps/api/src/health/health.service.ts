@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { HealthCheckSchema } from '@schemas/automation';
+import { HealthCheck } from '@schemas/automation';
 
 @Injectable()
 export class HealthService {
   constructor(private prisma: PrismaService) {}
 
-  async getHealth(): Promise<HealthCheckSchema> {
+  async getHealth(): Promise<HealthCheck> {
     const services = await this.checkServices();
     const overallStatus = this.determineOverallStatus(services);
 

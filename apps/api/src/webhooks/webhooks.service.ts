@@ -2,13 +2,13 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateWebhookRequestSchema,
-  UpdateWebhookRequestSchema,
-  WebhookListQuerySchema,
-  WebhookTestRequestSchema,
+  CreateWebhookRequest,
+  UpdateWebhookRequest,
+  WebhookListQuery,
+  WebhookTestRequest,
   WebhookTestResponseSchema,
-  WebhookDeliveryListQuerySchema,
-  WebhookRetryRequestSchema,
+  WebhookDeliveryListQuery,
+  WebhookRetryRequest,
   WebhookRetryResponseSchema,
   WebhookStatsSchema,
 } from '@schemas/automation';
@@ -17,7 +17,7 @@ import {
 export class WebhooksService {
   constructor(private prisma: PrismaService) {}
 
-  async getWebhooks(query: WebhookListQuerySchema) {
+  async getWebhooks(query: WebhookListQuery) {
     const {
       orgId,
       source,
@@ -122,7 +122,7 @@ export class WebhooksService {
     };
   }
 
-  async createWebhook(createWebhookDto: CreateWebhookRequestSchema) {
+  async createWebhook(createWebhookDto: CreateWebhookRequest) {
     const { source, event, url, secret, enabled, metadata } = createWebhookDto;
 
     // Validate webhook URL
@@ -167,7 +167,7 @@ export class WebhooksService {
     };
   }
 
-  async updateWebhook(id: string, updateWebhookDto: UpdateWebhookRequestSchema) {
+  async updateWebhook(id: string, updateWebhookDto: UpdateWebhookRequest) {
     const { url, secret, enabled, metadata } = updateWebhookDto;
 
     const webhook = await this.prisma.webhook.findUnique({
@@ -232,7 +232,7 @@ export class WebhooksService {
     return { message: 'Webhook deleted successfully' };
   }
 
-  async testWebhook(testDto: WebhookTestRequestSchema) {
+  async testWebhook(testDto: WebhookTestRequest) {
     const { webhookId, payload } = testDto;
 
     const webhook = await this.prisma.webhook.findUnique({
@@ -281,7 +281,7 @@ export class WebhooksService {
     }
   }
 
-  async getWebhookDeliveries(query: WebhookDeliveryListQuerySchema) {
+  async getWebhookDeliveries(query: WebhookDeliveryListQuery) {
     // In a real implementation, you would fetch from a webhook deliveries table
     // This is a mock implementation
     return {
@@ -297,7 +297,7 @@ export class WebhooksService {
     };
   }
 
-  async retryWebhookDelivery(id: string, retryDto: WebhookRetryRequestSchema) {
+  async retryWebhookDelivery(id: string, retryDto: WebhookRetryRequest) {
     const { delay } = retryDto;
 
     // In a real implementation, you would:

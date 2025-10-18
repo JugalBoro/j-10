@@ -14,15 +14,15 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { ConnectorsService } from './connectors.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateConnectorRequestSchema,
-  UpdateConnectorRequestSchema,
-  ConnectorTestRequestSchema,
-  ConnectorTestResponseSchema,
-  ConnectorInstallRequestSchema,
-  ConnectorInstallResponseSchema,
-  ConnectorCallbackRequestSchema,
-  ConnectorListQuerySchema,
-  ConnectorRotateSecretsRequestSchema,
+  CreateConnectorRequest,
+  UpdateConnectorRequest,
+  ConnectorTestRequest,
+  ConnectorTestResponse,
+  ConnectorInstallRequest,
+  ConnectorInstallResponse,
+  ConnectorCallbackRequest,
+  ConnectorListQuery,
+  ConnectorRotateSecretsRequest,
 } from '@schemas/automation';
 
 @ApiTags('connectors')
@@ -35,7 +35,7 @@ export class ConnectorsController {
   @Get()
   @ApiOperation({ summary: 'List connectors' })
   @ApiResponse({ status: 200, description: 'List of connectors' })
-  async getConnectors(@Query() query: ConnectorListQuerySchema) {
+  async getConnectors(@Query() query: ConnectorListQuery) {
     return this.connectorsService.getConnectors(query);
   }
 
@@ -51,7 +51,7 @@ export class ConnectorsController {
   @ApiOperation({ summary: 'Create connector' })
   @ApiResponse({ status: 201, description: 'Connector created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createConnector(@Body() createConnectorDto: CreateConnectorRequestSchema) {
+  async createConnector(@Body() createConnectorDto: CreateConnectorRequest) {
     return this.connectorsService.createConnector(createConnectorDto);
   }
 
@@ -61,7 +61,7 @@ export class ConnectorsController {
   @ApiResponse({ status: 404, description: 'Connector not found' })
   async updateConnector(
     @Param('id') id: string,
-    @Body() updateConnectorDto: UpdateConnectorRequestSchema
+    @Body() updateConnectorDto: UpdateConnectorRequest
   ) {
     return this.connectorsService.updateConnector(id, updateConnectorDto);
   }
@@ -77,21 +77,21 @@ export class ConnectorsController {
   @Post('test')
   @ApiOperation({ summary: 'Test connector configuration' })
   @ApiResponse({ status: 200, description: 'Test result' })
-  async testConnector(@Body() testDto: ConnectorTestRequestSchema) {
+  async testConnector(@Body() testDto: ConnectorTestRequest) {
     return this.connectorsService.testConnector(testDto);
   }
 
   @Post('install')
   @ApiOperation({ summary: 'Install connector' })
   @ApiResponse({ status: 200, description: 'Installation initiated' })
-  async installConnector(@Body() installDto: ConnectorInstallRequestSchema) {
+  async installConnector(@Body() installDto: ConnectorInstallRequest) {
     return this.connectorsService.installConnector(installDto);
   }
 
   @Post('callback')
   @ApiOperation({ summary: 'OAuth callback' })
   @ApiResponse({ status: 200, description: 'Callback processed' })
-  async connectorCallback(@Body() callbackDto: ConnectorCallbackRequestSchema) {
+  async connectorCallback(@Body() callbackDto: ConnectorCallbackRequest) {
     return this.connectorsService.connectorCallback(callbackDto);
   }
 
@@ -100,7 +100,7 @@ export class ConnectorsController {
   @ApiResponse({ status: 200, description: 'Secrets rotated' })
   async rotateSecrets(
     @Param('id') id: string,
-    @Body() rotateDto: ConnectorRotateSecretsRequestSchema
+    @Body() rotateDto: ConnectorRotateSecretsRequest
   ) {
     return this.connectorsService.rotateSecrets(id, rotateDto);
   }

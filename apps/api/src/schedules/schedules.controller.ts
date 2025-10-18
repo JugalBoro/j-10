@@ -14,10 +14,10 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { SchedulesService } from './schedules.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateScheduleRequestSchema,
-  UpdateScheduleRequestSchema,
-  ScheduleListQuerySchema,
-  ScheduleTestRequestSchema,
+  CreateScheduleRequest,
+  UpdateScheduleRequest,
+  ScheduleListQuery,
+  ScheduleTestRequest,
   ScheduleTestResponseSchema,
   ScheduleStatsSchema,
 } from '@schemas/automation';
@@ -32,7 +32,7 @@ export class SchedulesController {
   @Get()
   @ApiOperation({ summary: 'List schedules' })
   @ApiResponse({ status: 200, description: 'List of schedules' })
-  async getSchedules(@Query() query: ScheduleListQuerySchema) {
+  async getSchedules(@Query() query: ScheduleListQuery) {
     return this.schedulesService.getSchedules(query);
   }
 
@@ -48,7 +48,7 @@ export class SchedulesController {
   @ApiOperation({ summary: 'Create schedule' })
   @ApiResponse({ status: 201, description: 'Schedule created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createSchedule(@Body() createScheduleDto: CreateScheduleRequestSchema) {
+  async createSchedule(@Body() createScheduleDto: CreateScheduleRequest) {
     return this.schedulesService.createSchedule(createScheduleDto);
   }
 
@@ -58,7 +58,7 @@ export class SchedulesController {
   @ApiResponse({ status: 404, description: 'Schedule not found' })
   async updateSchedule(
     @Param('id') id: string,
-    @Body() updateScheduleDto: UpdateScheduleRequestSchema
+    @Body() updateScheduleDto: UpdateScheduleRequest
   ) {
     return this.schedulesService.updateSchedule(id, updateScheduleDto);
   }
@@ -74,7 +74,7 @@ export class SchedulesController {
   @Post('test')
   @ApiOperation({ summary: 'Test schedule' })
   @ApiResponse({ status: 200, description: 'Schedule test result' })
-  async testSchedule(@Body() testDto: ScheduleTestRequestSchema) {
+  async testSchedule(@Body() testDto: ScheduleTestRequest) {
     return this.schedulesService.testSchedule(testDto);
   }
 

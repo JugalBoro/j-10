@@ -14,12 +14,12 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { WorkflowsService } from './workflows.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  CreateWorkflowRequestSchema,
-  UpdateWorkflowRequestSchema,
-  WorkflowListQuerySchema,
-  WorkflowRunRequestSchema,
+  CreateWorkflowRequest,
+  UpdateWorkflowRequest,
+  WorkflowListQuery,
+  WorkflowRunRequest,
   WorkflowRunResponseSchema,
-  WorkflowTestRequestSchema,
+  WorkflowTestRequest,
   WorkflowTestResponseSchema,
 } from '@schemas/automation';
 
@@ -33,7 +33,7 @@ export class WorkflowsController {
   @Get()
   @ApiOperation({ summary: 'List workflows' })
   @ApiResponse({ status: 200, description: 'List of workflows' })
-  async getWorkflows(@Query() query: WorkflowListQuerySchema) {
+  async getWorkflows(@Query() query: WorkflowListQuery) {
     return this.workflowsService.getWorkflows(query);
   }
 
@@ -49,7 +49,7 @@ export class WorkflowsController {
   @ApiOperation({ summary: 'Create workflow' })
   @ApiResponse({ status: 201, description: 'Workflow created' })
   @ApiResponse({ status: 400, description: 'Invalid input' })
-  async createWorkflow(@Body() createWorkflowDto: CreateWorkflowRequestSchema) {
+  async createWorkflow(@Body() createWorkflowDto: CreateWorkflowRequest) {
     return this.workflowsService.createWorkflow(createWorkflowDto);
   }
 
@@ -59,7 +59,7 @@ export class WorkflowsController {
   @ApiResponse({ status: 404, description: 'Workflow not found' })
   async updateWorkflow(
     @Param('id') id: string,
-    @Body() updateWorkflowDto: UpdateWorkflowRequestSchema
+    @Body() updateWorkflowDto: UpdateWorkflowRequest
   ) {
     return this.workflowsService.updateWorkflow(id, updateWorkflowDto);
   }
@@ -75,14 +75,14 @@ export class WorkflowsController {
   @Post('run')
   @ApiOperation({ summary: 'Run workflow' })
   @ApiResponse({ status: 200, description: 'Workflow run initiated' })
-  async runWorkflow(@Body() runDto: WorkflowRunRequestSchema) {
+  async runWorkflow(@Body() runDto: WorkflowRunRequest) {
     return this.workflowsService.runWorkflow(runDto);
   }
 
   @Post('test')
   @ApiOperation({ summary: 'Test workflow' })
   @ApiResponse({ status: 200, description: 'Workflow test result' })
-  async testWorkflow(@Body() testDto: WorkflowTestRequestSchema) {
+  async testWorkflow(@Body() testDto: WorkflowTestRequest) {
     return this.workflowsService.testWorkflow(testDto);
   }
 }

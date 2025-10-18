@@ -2,22 +2,22 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateConnectorRequestSchema,
-  UpdateConnectorRequestSchema,
-  ConnectorTestRequestSchema,
+  CreateConnectorRequest,
+  UpdateConnectorRequest,
+  ConnectorTestRequest,
   ConnectorTestResponseSchema,
-  ConnectorInstallRequestSchema,
+  ConnectorInstallRequest,
   ConnectorInstallResponseSchema,
-  ConnectorCallbackRequestSchema,
-  ConnectorListQuerySchema,
-  ConnectorRotateSecretsRequestSchema,
+  ConnectorCallbackRequest,
+  ConnectorListQuery,
+  ConnectorRotateSecretsRequest,
 } from '@schemas/automation';
 
 @Injectable()
 export class ConnectorsService {
   constructor(private prisma: PrismaService) {}
 
-  async getConnectors(query: ConnectorListQuerySchema) {
+  async getConnectors(query: ConnectorListQuery) {
     const {
       orgId,
       type,
@@ -122,7 +122,7 @@ export class ConnectorsService {
     };
   }
 
-  async createConnector(createConnectorDto: CreateConnectorRequestSchema) {
+  async createConnector(createConnectorDto: CreateConnectorRequest) {
     const { type, name, settings, secrets, isSandbox } = createConnectorDto;
 
     // In a real implementation, you would:
@@ -159,7 +159,7 @@ export class ConnectorsService {
     };
   }
 
-  async updateConnector(id: string, updateConnectorDto: UpdateConnectorRequestSchema) {
+  async updateConnector(id: string, updateConnectorDto: UpdateConnectorRequest) {
     const { name, settings, secrets, isSandbox } = updateConnectorDto;
 
     const connector = await this.prisma.connector.findUnique({
@@ -216,7 +216,7 @@ export class ConnectorsService {
     return { message: 'Connector deleted successfully' };
   }
 
-  async testConnector(testDto: ConnectorTestRequestSchema) {
+  async testConnector(testDto: ConnectorTestRequest) {
     const { settings, secrets } = testDto;
 
     // In a real implementation, you would:
@@ -246,7 +246,7 @@ export class ConnectorsService {
     }
   }
 
-  async installConnector(installDto: ConnectorInstallRequestSchema) {
+  async installConnector(installDto: ConnectorInstallRequest) {
     const { type, redirectUri, state } = installDto;
 
     // In a real implementation, you would:
@@ -262,7 +262,7 @@ export class ConnectorsService {
     };
   }
 
-  async connectorCallback(callbackDto: ConnectorCallbackRequestSchema) {
+  async connectorCallback(callbackDto: ConnectorCallbackRequest) {
     const { type, code, state, error } = callbackDto;
 
     if (error) {
@@ -280,7 +280,7 @@ export class ConnectorsService {
     return { message: 'OAuth callback processed successfully' };
   }
 
-  async rotateSecrets(id: string, rotateDto: ConnectorRotateSecretsRequestSchema) {
+  async rotateSecrets(id: string, rotateDto: ConnectorRotateSecretsRequest) {
     const { secrets } = rotateDto;
 
     const connector = await this.prisma.connector.findUnique({

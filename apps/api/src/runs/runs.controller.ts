@@ -12,10 +12,10 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagg
 import { RunsService } from './runs.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
-  RunListQuerySchema,
-  RunRetryRequestSchema,
-  RunCancelRequestSchema,
-  RunLogsQuerySchema,
+  RunListQuery,
+  RunRetryRequest,
+  RunCancelRequest,
+  RunLogsQuery,
   RunLogsResponseSchema,
   RunStatsSchema,
 } from '@schemas/automation';
@@ -30,7 +30,7 @@ export class RunsController {
   @Get()
   @ApiOperation({ summary: 'List runs' })
   @ApiResponse({ status: 200, description: 'List of runs' })
-  async getRuns(@Query() query: RunListQuerySchema) {
+  async getRuns(@Query() query: RunListQuery) {
     return this.runsService.getRuns(query);
   }
 
@@ -48,7 +48,7 @@ export class RunsController {
   @ApiResponse({ status: 404, description: 'Run not found' })
   async retryRun(
     @Param('id') id: string,
-    @Body() retryDto: RunRetryRequestSchema
+    @Body() retryDto: RunRetryRequest
   ) {
     return this.runsService.retryRun(id, retryDto);
   }
@@ -59,7 +59,7 @@ export class RunsController {
   @ApiResponse({ status: 404, description: 'Run not found' })
   async cancelRun(
     @Param('id') id: string,
-    @Body() cancelDto: RunCancelRequestSchema
+    @Body() cancelDto: RunCancelRequest
   ) {
     return this.runsService.cancelRun(id, cancelDto);
   }
@@ -70,7 +70,7 @@ export class RunsController {
   @ApiResponse({ status: 404, description: 'Run not found' })
   async getRunLogs(
     @Param('id') id: string,
-    @Query() query: RunLogsQuerySchema
+    @Query() query: RunLogsQuery
   ) {
     return this.runsService.getRunLogs(id, query);
   }

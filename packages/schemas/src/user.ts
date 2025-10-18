@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { IdSchema, EmailSchema, DateTimeSchema, UserRoleSchema } from './common';
+import { IdSchema, EmailSchema, DateTimeSchema } from './common';
+import { UserRoleSchema } from './auth';
 
 export const UserSchema = z.object({
   id: IdSchema,

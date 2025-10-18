@@ -2,10 +2,10 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { logger } from '@common/automation';
 import {
-  CreateScheduleRequestSchema,
-  UpdateScheduleRequestSchema,
-  ScheduleListQuerySchema,
-  ScheduleTestRequestSchema,
+  CreateScheduleRequest,
+  UpdateScheduleRequest,
+  ScheduleListQuery,
+  ScheduleTestRequest,
   ScheduleTestResponseSchema,
   ScheduleStatsSchema,
 } from '@schemas/automation';
@@ -14,7 +14,7 @@ import {
 export class SchedulesService {
   constructor(private prisma: PrismaService) {}
 
-  async getSchedules(query: ScheduleListQuerySchema) {
+  async getSchedules(query: ScheduleListQuery) {
     const {
       orgId,
       workflowId,
@@ -145,7 +145,7 @@ export class SchedulesService {
     };
   }
 
-  async createSchedule(createScheduleDto: CreateScheduleRequestSchema) {
+  async createSchedule(createScheduleDto: CreateScheduleRequest) {
     const {
       workflowId,
       name,
@@ -214,7 +214,7 @@ export class SchedulesService {
     };
   }
 
-  async updateSchedule(id: string, updateScheduleDto: UpdateScheduleRequestSchema) {
+  async updateSchedule(id: string, updateScheduleDto: UpdateScheduleRequest) {
     const {
       name,
       description,
@@ -300,7 +300,7 @@ export class SchedulesService {
     return { message: 'Schedule deleted successfully' };
   }
 
-  async testSchedule(testDto: ScheduleTestRequestSchema) {
+  async testSchedule(testDto: ScheduleTestRequest) {
     const { cron, timezone, from, to, limit = 10 } = testDto;
 
     if (!this.isValidCronExpression(cron)) {
